@@ -82,8 +82,8 @@ EOF
 %doc CHANGES.txt README.txt COPYING.txt
 %{_bindir}/htmldoc
 %{_mandir}/man1/*
-%{_docdir}/htmldoc/*
-%{_datadir}/htmldoc/*
+%{_docdir}/%{name}
+%{_datadir}/%{name}
 %{_datadir}/applications/mandriva-%{name}.desktop
 
 %files nogui
