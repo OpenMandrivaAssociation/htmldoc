@@ -1,13 +1,9 @@
-%define name	htmldoc
-%define version	1.8.27
-%define release %mkrel 1
-
 Summary:	Convert HTML documents into PDF or PS format 
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		htmldoc
+Version:	1.8.27
+Release:	%mkrel 2
 Source:		%{name}-%{version}-source.tar.bz2 
-License:	GPL
+License:	GPLv2
 Group:		File tools
 URL:		http://www.htmldoc.org/
 BuildRequires:	libjpeg-devel
@@ -26,14 +22,12 @@ Summary:	Convert HTML documents into PDF or PS format
 Group:		File tools
 
 %description	nogui
-This package contains the non gui version of %{name}
+This package contains the non-GUI version of %{name}
 
 %prep
-
 %setup -q
 
 %build
-
 # first build the non gui version
 %configure \
     --without-gui
@@ -55,45 +49,45 @@ make clean
 
 %install
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
-
 %makeinstall
 
 install -d %{buildroot}%{_bindir}
-install -d %{buildroot}%{_menudir}
-
-cat > %{buildroot}%{_menudir}/%{name} <<EOF
-?package(%{name}): \
-command="%{_bindir}/htmldoc" \
-title="Htmldoc" \
-longtitle="Converting Html files to PDF or PostScript" \
-icon="publishing_section.png" \
-needs="x11" \
-section="Office/Publishing"
-EOF
-
 install -m0755 htmldoc-nogui %{buildroot}%{_bindir}/
+
+mkdir -p %{buildroot}%{_datadir}/applications
+cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop <<EOF
+[Desktop Entry]
+Name=HTMLDoc
+Comment=Convert HTML files to PDF or PostScript
+Exec=%{_bindir}/%{name} 
+Icon=publishing_section
+Terminal=false
+Type=Application
+StartupNotify=true
+MimeType=foo/bar;foo2/bar2;
+Categories=FileTools;
+EOF
 
 %clean
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
 %post
-%update_menus
+%{update_menus}
 
 %postun
-%clean_menus
+%{clean_menus}
 
 %files
 %defattr(-,root,root,0755)
-%doc CHANGES.txt README.txt
+%doc CHANGES.txt README.txt COPYING.txt
 %{_bindir}/htmldoc
 %{_mandir}/man1/*
 %{_docdir}/htmldoc/*
 %{_datadir}/htmldoc/*
-%{_menudir}/*
+%{_datadir}/applications/mandriva-%{name}.desktop
 
 %files nogui
 %defattr(-,root,root,0755)
-%doc CHANGES.txt README.txt
+%doc CHANGES.txt README.txt COPYING.txt
 %{_bindir}/htmldoc-nogui
-
 
