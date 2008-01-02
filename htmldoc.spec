@@ -12,6 +12,7 @@ BuildRequires:	zlib-devel
 BuildRequires:	openssl-devel
 BuildRequires:	libfltk-devel
 Requires:	fltk
+BuildRoot:	%{_tmppath}/%{name}-buildroot
 
 %description
 HTMLDOC allow you to convert Html documents into PDF or PS format.
