@@ -1,7 +1,7 @@
 Summary:	Convert HTML documents into PDF or PS format 
 Name:		htmldoc
 Version:	1.8.27
-Release:	%mkrel 2
+Release:	%mkrel 3
 Source:		%{name}-%{version}-source.tar.bz2 
 License:	GPLv2
 Group:		File tools
@@ -30,18 +30,18 @@ This package contains the non-GUI version of %{name}
 
 %build
 # first build the non gui version
-%configure \
+%configure2_5x \
     --without-gui
 
 %make
 mv htmldoc/htmldoc htmldoc-nogui
 make clean
 
-%configure \
+%configure2_5x \
     --disable-rpath \
-    --enable-localpng \
-    --enable-localjpeg \
-    --enable-localzlib \
+    --disable-localpng \
+    --disable-localjpeg \
+    --disable-localzlib \
     --with-gui \
     --with-openssl-libs \
     --with-openssl-includes
@@ -94,4 +94,3 @@ EOF
 %defattr(-,root,root,0755)
 %doc CHANGES.txt README.txt COPYING.txt
 %{_bindir}/htmldoc-nogui
-
