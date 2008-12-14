@@ -10,7 +10,7 @@ BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	zlib-devel
 BuildRequires:	openssl-devel
-BuildRequires:	libfltk-devel
+BuildRequires:	fltk-devel
 Requires:	fltk
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 
