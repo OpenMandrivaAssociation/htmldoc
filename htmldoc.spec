@@ -1,18 +1,19 @@
-Summary:	Convert HTML documents into PDF or PS format 
+Summary:	Convert HTML documents into PDF or PS format
 Name:		htmldoc
 Version:	1.8.27
-Release:	%mkrel 4
-Source:		%{name}-%{version}-source.tar.bz2 
+Release:	%mkrel 5
 License:	GPLv2
 Group:		File tools
 URL:		http://www.htmldoc.org/
+Source:		%{name}-%{version}-source.tar.bz2 
+Patch0:		htmldoc-1.8.27-CVE-2009-3050.diff
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	zlib-devel
 BuildRequires:	openssl-devel
 BuildRequires:	fltk-devel
 Requires:	fltk
-BuildRoot:	%{_tmppath}/%{name}-buildroot
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 HTMLDOC allow you to convert Html documents into PDF or PS format.
@@ -26,11 +27,17 @@ Group:		File tools
 This package contains the non-GUI version of %{name}
 
 %prep
+
 %setup -q
+%patch0 -p1 -b .CVE-2009-3050
 
 %build
 # first build the non gui version
 %configure2_5x \
+    --disable-rpath \
+    --disable-localpng \
+    --disable-localjpeg \
+    --disable-localzlib \
     --without-gui
 
 %make
@@ -49,7 +56,8 @@ make clean
 %make
 
 %install
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
+
 %makeinstall
 
 install -d %{buildroot}%{_bindir}
@@ -60,7 +68,7 @@ cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop <<EOF
 [Desktop Entry]
 Name=HTMLDoc
 Comment=Convert HTML files to PDF or PostScript
-Exec=%{_bindir}/%{name} 
+Exec=%{_bindir}/%{name}
 Icon=publishing_section
 Terminal=false
 Type=Application
@@ -68,9 +76,6 @@ StartupNotify=true
 MimeType=foo/bar;foo2/bar2;
 Categories=FileTools;
 EOF
-
-%clean
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
 %if %mdkversion < 200900
 %post
@@ -81,6 +86,9 @@ EOF
 %postun
 %{clean_menus}
 %endif
+
+%clean
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,0755)
