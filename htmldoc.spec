@@ -7,6 +7,7 @@ Group:		File tools
 URL:		http://www.htmldoc.org/
 Source:		%{name}-%{version}-source.tar.bz2 
 Patch0:		htmldoc-1.8.27-CVE-2009-3050.diff
+Patch1:		htmldoc-fortify-fail.patch
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	zlib-devel
@@ -30,6 +31,7 @@ This package contains the non-GUI version of %{name}
 
 %setup -q
 %patch0 -p1 -b .CVE-2009-3050
+%patch1 -p1
 
 %build
 # first build the non gui version
