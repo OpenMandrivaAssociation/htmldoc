@@ -1,13 +1,14 @@
 Summary:	Convert HTML documents into PDF or PS format
 Name:		htmldoc
 Version:	1.8.27
-Release:	%mkrel 12
+Release:	%mkrel 13
 License:	GPLv2
 Group:		File tools
 URL:		http://www.htmldoc.org/
 Source:		%{name}-%{version}-source.tar.bz2 
 Patch0:		htmldoc-1.8.27-CVE-2009-3050.diff
 Patch1:		htmldoc-fortify-fail.patch
+Patch2:		htmldoc-1.8.27-fix-build-against-libpng15.patch
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	zlib-devel
@@ -32,6 +33,9 @@ This package contains the non-GUI version of %{name}
 %setup -q
 %patch0 -p1 -b .CVE-2009-3050
 %patch1 -p1
+%if %mdkversion >= 201200
+%patch2 -p1 -b .libpng15
+%endif
 
 %build
 # first build the non gui version
