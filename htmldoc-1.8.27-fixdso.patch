@@ -1,0 +1,12 @@
+diff -urN htmldoc-1.8.27/Makedefs.in htmldoc-1.8.27-patched/Makedefs.in
+--- htmldoc-1.8.27/Makedefs.in	2005-10-29 07:32:59.000000000 +1100
++++ htmldoc-1.8.27-patched/Makedefs.in	2012-08-28 00:20:44.308613717 +1100
+@@ -74,7 +74,7 @@
+ CFLAGS		=	-I.. @CFLAGS@ @LARGEFILE@ $(OPTIM) @JPEGINC@ @PNGINC@ @ZLIBINC@
+ CXXFLAGS	=	-I.. @CXXFLAGS@ @LARGEFILE@ $(OPTIM) @JPEGINC@ @PNGINC@ @ZLIBINC@
+ LDFLAGS		=	@LDFLAGS@ $(OPTIM)
+-LIBS		=	@SSLLIBS@ @LIBS@
++LIBS		=	@SSLLIBS@ @LIBS@ -lstdc++
+ OPTIM		=	@OPTIM@ @SSLFLAGS@
+ 
+ #
