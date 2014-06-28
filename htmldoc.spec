@@ -1,20 +1,18 @@
 Summary:	Convert HTML documents into PDF or PS format
 Name:		htmldoc
-Version:	1.8.27
-Release:	19
+Version:	1.8.28
+Release:	1
 License:	GPLv2
 Group:		File tools
 Url:		http://www.htmldoc.org/
-Source0:	%{name}-%{version}-source.tar.bz2 
-Patch0:		htmldoc-1.8.27-CVE-2009-3050.diff
-Patch1:		htmldoc-fortify-fail.patch
-Patch2:		htmldoc-1.8.27-fix-build-against-libpng15.patch
+Source0:	http://www.msweet.org/files/project1/%{name}-%{version}-source.tar.bz2
+Patch0:		htmldoc-1.8.28-compile.patch
 Patch3:		htmldoc-1.8.27-fixdso.patch
 
 BuildRequires:	fltk-devel
 BuildRequires:	jpeg-devel
 BuildRequires:	pkgconfig(libpng)
-BuildRequires:	pkgconfig(openssl)
+BuildRequires:	pkgconfig(gnutls) pkgconfig(libgcrypt)
 BuildRequires:	pkgconfig(zlib)
 Requires:	fltk
 
@@ -33,10 +31,11 @@ This package contains the non-GUI version of %{name}
 
 %setup -q
 %apply_patches
+autoconf
 
 %build
 # first build the non gui version
-%configure2_5x \
+%configure \
 	--disable-localpng \
 	--disable-localjpeg \
 	--disable-localzlib \
@@ -46,7 +45,7 @@ This package contains the non-GUI version of %{name}
 mv htmldoc/htmldoc htmldoc-nogui
 make clean
 
-%configure2_5x \
+%configure \
 	--disable-localpng \
 	--disable-localjpeg \
 	--disable-localzlib \
