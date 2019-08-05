@@ -12,6 +12,7 @@ BuildRequires:	jpeg-devel
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	pkgconfig(gnutls) pkgconfig(libgcrypt)
 BuildRequires:	pkgconfig(zlib)
+BuildRequires:	x11-devel
 Requires:	fltk
 
 %description
