@@ -14,6 +14,7 @@ BuildRequires:	pkgconfig(gnutls) pkgconfig(libgcrypt)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xext)
+BuildRequires:	pkgconfig(cairo)
 Requires:	fltk
 
 %description
