@@ -1,13 +1,11 @@
 Summary:	Convert HTML documents into PDF or PS format
 Name:		htmldoc
-Version:	1.8.28
-Release:	7
+Version:	1.9.5
+Release:	1
 License:	GPLv2
 Group:		File tools
 Url:		http://www.htmldoc.org/
-Source0:	http://www.msweet.org/files/project1/%{name}-%{version}-source.tar.bz2
-Patch0:		htmldoc-1.8.28-compile.patch
-Patch3:		htmldoc-1.8.27-fixdso.patch
+Source0:	https://github.com/michaelrsweet/htmldoc/archive/v%{version}.tar.gz
 
 BuildRequires:	fltk-devel
 BuildRequires:	jpeg-devel
@@ -56,8 +54,6 @@ make clean
 %make
 
 %install
-%makeinstall
-
 install -d %{buildroot}%{_bindir}
 install -m0755 htmldoc-nogui %{buildroot}%{_bindir}/
 
@@ -75,14 +71,18 @@ MimeType=text/html;
 Categories=FileTools;Utility;
 EOF
 
+make install \
+  BUILDROOT=%{buildroot} \
+  VERBOSE=1
+
 %files
-%doc CHANGES.txt README.txt COPYING.txt
+%doc help.html htmldoc.pdf
 %{_bindir}/htmldoc
 %{_mandir}/man1/*
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/pixmaps/htmldoc.xpm
+%{_datadir}/mime/packages/htmldoc.xml
 
 %files nogui
-%doc CHANGES.txt README.txt COPYING.txt
 %{_bindir}/htmldoc-nogui
-
