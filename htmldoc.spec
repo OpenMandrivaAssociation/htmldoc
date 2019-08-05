@@ -16,6 +16,7 @@ BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xext)
 BuildRequires:	pkgconfig(cairo)
 BuildRequires:	pkgconfig(xinerama)
+BuildRequires:	pkgconfig(xft)
 Requires:	fltk
 
 %description
