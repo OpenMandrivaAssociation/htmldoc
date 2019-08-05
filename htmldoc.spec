@@ -13,6 +13,7 @@ BuildRequires:	pkgconfig(libpng)
 BuildRequires:	pkgconfig(gnutls) pkgconfig(libgcrypt)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(x11)
+BuildRequires:	pkgconfig(xext)
 Requires:	fltk
 
 %description
