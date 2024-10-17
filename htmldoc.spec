@@ -4,7 +4,7 @@ Version:	1.9.9
 Release:	2
 License:	GPLv2
 Group:		File tools
-Url:		http://www.htmldoc.org/
+Url:		https://www.htmldoc.org/
 Source0:	https://github.com/michaelrsweet/htmldoc/archive/v%{version}.tar.gz
 
 BuildRequires:	fltk-devel
