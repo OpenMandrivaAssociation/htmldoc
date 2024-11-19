@@ -17,7 +17,7 @@ BuildRequires:	pkgconfig(xext)
 BuildRequires:	pkgconfig(cairo)
 BuildRequires:	pkgconfig(xinerama)
 BuildRequires:	pkgconfig(xft)
-Requires:	fltk
+BuildRequires:	pkgconfig(cups)
 
 %description
 HTMLDOC allow you to convert Html documents into PDF or PS format.
