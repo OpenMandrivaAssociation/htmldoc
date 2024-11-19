@@ -1,7 +1,7 @@
 Summary:	Convert HTML documents into PDF or PS format
 Name:		htmldoc
-Version:	1.9.9
-Release:	2
+Version:	1.9.18
+Release:	1
 License:	GPLv2
 Group:		File tools
 Url:		https://www.htmldoc.org/
@@ -86,8 +86,8 @@ make install \
 %{_mandir}/man1/*
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/pixmaps/htmldoc.xpm
 %{_datadir}/mime/packages/htmldoc.xml
+%{_datadir}/icons/*/*/*/htmldoc.*
 
 %files nogui
 %{_bindir}/htmldoc-nogui
