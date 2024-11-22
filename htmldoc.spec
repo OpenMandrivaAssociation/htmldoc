@@ -1,7 +1,7 @@
 Summary:	Convert HTML documents into PDF or PS format
 Name:		htmldoc
-Version:	1.9.18
-Release:	2
+Version:	1.9.19
+Release:	1
 License:	GPLv2
 Group:		File tools
 Url:		https://www.htmldoc.org/
