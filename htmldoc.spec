@@ -7,6 +7,11 @@ Group:		File tools
 Url:		https://www.htmldoc.org/
 Source0:	https://github.com/michaelrsweet/htmldoc/archive/v%{version}.tar.gz
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	fltk-devel
 BuildRequires:	jpeg-devel
 BuildRequires:	pkgconfig(libpng)
